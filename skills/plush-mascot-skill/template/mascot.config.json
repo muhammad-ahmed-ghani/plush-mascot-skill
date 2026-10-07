@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "character": {
+    "name": "Mascot",
+    "slug": "mascot",
+    "product": "Your Product",
+    "tagline": "a warm, capable little companion"
+  },
+  "palette": {
+    "body": "#F05C63",
+    "bodyDeep": "#C8434B",
+    "face": "#24252B",
+    "eye": "#FFF1DD",
+    "cheek": "#E9757B",
+    "paper": "#F2E8D7",
+    "ink": "#16171C",
+    "accent": "#F53B63"
+  },
+  "frame": { "size": 1254, "ppu": 350, "axisX": 627.5, "feetY": 1204, "topY": 47 },
+  "art": {
+    "hero": "assets/mascot-hero.png",
+    "transparent": "assets/mascot-transparent.png",
+    "turnaround": "assets/mascot-turnaround.png",
+    "useCases": "assets/mascot-use-cases.png",
+    "mastersDir": "art/masters"
+  },
+  "segmentation": {
+    "background": "auto",
+    "body": { "rgb": "auto", "tolerance": 40 },
+    "face": { "rgb": "auto", "tolerance": 40 }
+  },
+  "nap": {
+    "tileSize": 1024,
+    "seed": 1,
+    "tiles": { "body": "assets/mascot-nap-body.png", "face": "assets/mascot-nap-face.png" },
+    "emphasis": { "body": "scripts/nap/body-emphasis.json", "face": "scripts/nap/face-emphasis.json" }
+  },
+  "mesh": { "final": "assets/mascot-mesh.bin", "lite": "assets/mascot-mesh-lite.bin" },
+  "face": {
+    "maps": {
+      "halo": "assets/mascot-face-halo.png",
+      "eyeRim": "assets/mascot-eye-rim.png",
+      "scleraShade": "assets/mascot-sclera-shade.png"
+    }
+  },
+  "page": {
+    "title": "{name}, the face of {product}",
+    "description": "Meet {name}, the little felt character who lives inside {product}. Scroll and watch {name} listen, think, get to work and wait for your say.",
+    "icon": "assets/app-icon.svg",
+    "touchIcon": "assets/apple-touch-icon.png",
+    "emblem": "assets/emblem.svg",
+    "poster": "assets/mascot-transparent.webp",
+    "prints": {
+      "turnaround": { "small": "assets/mascot-turnaround-768.webp", "large": "assets/mascot-turnaround-1536.webp" },
+      "useCases": { "small": "assets/mascot-use-cases-768.webp", "large": "assets/mascot-use-cases-1536.webp" }
+    },
+    "colors": { "lightInk": "#FFF1DD", "accentOnLight": "#B3203F", "accentOnDark": "#FF8FA6", "mascotText": "#E2474F" },
+    "fonts": { "display": "Fraunces", "text": "Alegreya Sans", "note": "Covered By Your Grace" }
+  }
+}

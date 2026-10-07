@@ -1,0 +1,1 @@
+Lighting: soft, even, nearly shadowless studio light from the front with only gentle self-occlusion in creases and under the head; no strong directional shadows, no rim glow and no coloured light, so the fabric colour and fibre detail read the same over the whole figure. Neutral exposure and white balance.

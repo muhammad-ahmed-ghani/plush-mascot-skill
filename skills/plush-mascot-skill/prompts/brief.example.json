@@ -1,0 +1,28 @@
+{
+  "name": "Mascot",
+  "one_liner": "a warm, capable little maker who keeps an eye on the work",
+  "personality": "warm, observant, quietly competent",
+  "product": "an agentic productivity app",
+  "form": "a compact creature with an oversized, softly squared head blending into a small pear-shaped body, short legs and small rounded mitten hands",
+  "silhouette": "two short rounded tabs set diagonally at the upper corners of the head (not bunny ears, not fox ears) and two sturdy splayed feet, which together make a subtle four-way X shape without being a literal letter",
+  "body_color": { "name": "coral red", "hex": "#F05C63" },
+  "face_color": { "name": "deep warm charcoal", "hex": "#24252B" },
+  "eye_color": { "name": "warm cream", "hex": "#FFF1DD" },
+  "accent_color": { "name": "muted coral", "hex": "#E9757B" },
+  "material": "very fine short micro-suede needle-felt plush, sculptural rather than shaggy",
+  "face": "an inset oval face plate of soft matte charcoal fabric (not a screen, not a visor), warm cream oval eyes with dark round pupils and tiny natural catchlights, a small understated friendly curved mouth sewn as a raised cord, and two small muted coral cheek appliques",
+  "eye_note": "Eyes kind, intelligent and attentive, never wide or manic.",
+  "chest_mark": "a tiny tonal stitched X made of wound cord at the centre of the chest, same hue as the body",
+  "hands_feet": "Small rounded mitten hands without fingers, short sturdy splayed feet, no toes",
+  "forbidden": "no tail, no nose, no teeth, no claws, no antennas, no clothing, no fingers, no mechanical joints",
+  "originality_note": "Original character. It must not resemble any existing mascot, toy or brand character; in particular it is not a beige hooded mascot.",
+  "scene_bg": { "name": "warm off-white", "hex": "#F6F3EF" },
+  "chroma": false,
+  "key_color": { "name": "chroma green", "hex": "#00FF00" },
+  "props": {
+    "work": "charcoal over-ear headphones and a small open charcoal laptop, both hands near the keyboard",
+    "research": "a simple cream paper card examined through a rounded coral magnifying glass, curious head tilt",
+    "decision": "one open palm extended, a cream card with a single simple charcoal checkmark held in the other hand, patiently inviting a decision",
+    "celebrate": "a small happy hop with both arms raised and exactly three tiny coral and gold confetti pieces"
+  }
+}

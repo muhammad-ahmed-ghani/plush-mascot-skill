@@ -1,0 +1,1 @@
+Hard exclusions: {{forbidden}}. No text, lettering, logos, symbols or watermark anywhere. Nothing glossy, rubbery, wet or translucent; no CGI-smooth skin; no long hair-like fur; no extra limbs; no costume or accessory that is not listed. {{originality_note|Original character; it must not resemble any existing mascot or brand character.}}

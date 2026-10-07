@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mascot reel (dev only)</title>
+<style>
+  /* The frame the preview reel is recorded from (scripts/dev/reel.mjs): the live stage with the page's type and colours. */
+  @font-face { font-family: "Fraunces"; src: url(/assets/fonts/fraunces.woff2) format("woff2"); font-weight: 400 800; font-display: block; }
+  @font-face { font-family: "Alegreya Sans"; src: url(/assets/fonts/alegreya-sans-500.woff2) format("woff2"); font-weight: 400 600; font-display: block; }
+  html,body{margin:0;background:#f2e8d7}
+  #frame{position:relative;width:800px;height:800px;overflow:hidden;color:#16171c;font-family:"Alegreya Sans","Gill Sans",sans-serif;
+    background:radial-gradient(ellipse at 50% 42%,#fbf5ea 0,#f4ead8 58%,#ebdfca 100%)}
+  #stage{position:absolute;inset:0 0 118px 0}
+  .brand{position:absolute;left:34px;top:28px;display:flex;align-items:center;gap:12px;font:600 23px "Fraunces",Georgia,serif;letter-spacing:-.01em}
+  .brand img{width:42px;height:42px;display:block}
+  .brand b{color:#f53b63;font-weight:600}
+  .label{position:absolute;left:0;right:0;bottom:40px;text-align:center}
+  .title{display:block;font:600 34px/1.1 "Fraunces",Georgia,serif;letter-spacing:-.015em}
+  .status{display:inline-flex;align-items:center;gap:9px;margin-top:8px;font-size:20px;color:#5a514b}
+  .status svg{width:15px;height:15px;color:#f53b63}
+  .steps{position:absolute;right:34px;top:40px;display:flex;gap:8px;color:#16171c33}
+  .steps svg{width:14px;height:14px}
+  .steps svg.on{color:#f53b63}
+</style>
+</head>
+<body>
+<div id="frame">
+  <div id="stage"></div>
+  <div class="brand"><img src="/assets/app-icon.svg" alt="" width="42" height="42"><span>{{character.product}}</span></div>
+  <div class="steps" id="steps"></div>
+  <div class="label"><span class="title" id="title"></span><span class="status"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="4.2 3.4"/></svg><span id="status"></span></span></div>
+</div>
+<script type="module" src="/src/reel.js"></script>
+</body>
+</html>

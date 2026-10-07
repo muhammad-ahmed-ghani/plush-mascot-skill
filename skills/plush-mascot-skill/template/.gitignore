@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+
+.pipeline/
+public/
+scripts/bake/.refs/
+scripts/bake/.seams/
+scripts/nap/.cache/
+scripts/dev/.refs/
+scripts/dev/.fit-tmp/
+__pycache__/
+art/candidates/

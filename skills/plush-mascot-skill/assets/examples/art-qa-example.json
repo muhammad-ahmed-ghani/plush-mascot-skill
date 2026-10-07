@@ -1,0 +1,302 @@
+[
+ {
+  "file": "mascot-transparent.png",
+  "kind": "transparent",
+  "status": "pass",
+  "checks": [
+   {
+    "check": "format",
+    "status": "pass",
+    "value": "png 8-bit 1254x1254",
+    "threshold": "8-bit png/webp",
+    "message": "format and bit depth",
+    "fix": "re-export as 8-bit PNG"
+   },
+   {
+    "check": "resolution",
+    "status": "pass",
+    "value": 1254,
+    "threshold": ">=1200 (canonical frame is 1254; masters of 2400+ are better)",
+    "message": "long edge 1254px",
+    "fix": "regenerate at the max tier (references/image-generation.md); never upscale"
+   },
+   {
+    "check": "jpeg_blockiness",
+    "status": "pass",
+    "value": 1.02,
+    "threshold": "<1.2",
+    "message": "ratio of 8-px block-edge gradient to mean gradient (1.0 = none)",
+    "fix": "regenerate as PNG; never extract nap from a JPEG"
+   },
+   {
+    "check": "palette",
+    "status": "pass",
+    "value": "body dE 10, bodyDeep dE 10, face dE 6, eye dE 16, cheek dE 11, paper dE 15",
+    "threshold": "informational",
+    "message": "nearest image colour to each palette token (lit fabric differs from the token; compare across the set)",
+    "fix": ""
+   },
+   {
+    "check": "real_alpha",
+    "status": "pass",
+    "value": "53% clear",
+    "threshold": ">5% fully transparent",
+    "message": "a real alpha channel with a cut-out background",
+    "fix": "ask for background=transparent, or a flat key colour and run alpha_extract.py key"
+   },
+   {
+    "check": "baked_checkerboard",
+    "status": "pass",
+    "value": false,
+    "threshold": "none",
+    "message": "no baked checkerboard",
+    "fix": "request real alpha or a flat key colour"
+   },
+   {
+    "check": "margins",
+    "status": "pass",
+    "value": "top 3.7% bottom 4.0% left 15.4% right 15.4%",
+    "threshold": ">=3.5% each side (canonical frame: 3.7%)",
+    "message": "empty margin around the figure (feet and tips must be inside the frame)",
+    "fix": "regenerate: \"about 8 percent empty margin on every side\""
+   },
+   {
+    "check": "edge_halo",
+    "status": "pass",
+    "value": 22.1,
+    "threshold": "<30 mean luminance difference (example 22; a white halo 97)",
+    "message": "edge colour matches the interior",
+    "fix": "alpha_extract.py key (unmix, despill) or refine; regenerate on a flat key colour"
+   },
+   {
+    "check": "islands",
+    "status": "pass",
+    "value": 0,
+    "threshold": "<=3 stray components",
+    "message": "stray fragments away from the figure",
+    "fix": "alpha_extract.py refine, or clean a copy"
+   },
+   {
+    "check": "floor_shadow",
+    "status": "pass",
+    "value": 54,
+    "threshold": "<0.04% of the frame below the feet",
+    "message": "a semi-transparent shadow below the soles",
+    "fix": "regenerate with \"no cast or contact shadow\""
+   },
+   {
+    "check": "symmetry",
+    "status": "pass",
+    "value": 0.977,
+    "threshold": ">=0.95 mirror IoU",
+    "message": "axis at column 627.7 of 1254",
+    "fix": "regenerate the registered front in a strict symmetric pose"
+   },
+   {
+    "check": "fibre_detail",
+    "status": "pass",
+    "value": 6.7,
+    "threshold": ">=5 (example art 6.7; blurred or plastic < 1)",
+    "message": "fibre-band luminance std on flat fabric, scaled to the canonical density",
+    "fix": "regenerate with the fabric partial at quality high; never upscale or smooth"
+   }
+  ]
+ },
+ {
+  "file": "mascot-hero.png",
+  "kind": "hero",
+  "status": "pass",
+  "checks": [
+   {
+    "check": "format",
+    "status": "pass",
+    "value": "png 8-bit 1254x1254",
+    "threshold": "8-bit png/webp",
+    "message": "format and bit depth",
+    "fix": "re-export as 8-bit PNG"
+   },
+   {
+    "check": "resolution",
+    "status": "pass",
+    "value": 1254,
+    "threshold": ">=1200 (canonical frame is 1254; masters of 2400+ are better)",
+    "message": "long edge 1254px",
+    "fix": "regenerate at the max tier (references/image-generation.md); never upscale"
+   },
+   {
+    "check": "jpeg_blockiness",
+    "status": "pass",
+    "value": 1.01,
+    "threshold": "<1.2",
+    "message": "ratio of 8-px block-edge gradient to mean gradient (1.0 = none)",
+    "fix": "regenerate as PNG; never extract nap from a JPEG"
+   },
+   {
+    "check": "palette",
+    "status": "pass",
+    "value": "body dE 10, bodyDeep dE 10, face dE 8, eye dE 8, cheek dE 15, paper dE 6",
+    "threshold": "informational",
+    "message": "nearest image colour to each palette token (lit fabric differs from the token; compare across the set)",
+    "fix": ""
+   },
+   {
+    "check": "background_plain",
+    "status": "pass",
+    "value": 2.6,
+    "threshold": "<14 std at the border (0-255)",
+    "message": "border colour spread",
+    "fix": "regenerate on a flat field"
+   },
+   {
+    "check": "sharpness",
+    "status": "pass",
+    "value": 219.7,
+    "threshold": ">=60 Laplacian variance",
+    "message": "overall sharpness",
+    "fix": "regenerate at quality high / larger size; never upscale"
+   }
+  ]
+ },
+ {
+  "file": "mascot-turnaround.png",
+  "kind": "turnaround",
+  "status": "pass",
+  "checks": [
+   {
+    "check": "format",
+    "status": "pass",
+    "value": "png 8-bit 1536x1024",
+    "threshold": "8-bit png/webp",
+    "message": "format and bit depth",
+    "fix": "re-export as 8-bit PNG"
+   },
+   {
+    "check": "resolution",
+    "status": "pass",
+    "value": 1536,
+    "threshold": ">=1200 (canonical frame is 1254; masters of 2400+ are better)",
+    "message": "long edge 1536px",
+    "fix": "regenerate at the max tier (references/image-generation.md); never upscale"
+   },
+   {
+    "check": "jpeg_blockiness",
+    "status": "pass",
+    "value": 0.97,
+    "threshold": "<1.2",
+    "message": "ratio of 8-px block-edge gradient to mean gradient (1.0 = none)",
+    "fix": "regenerate as PNG; never extract nap from a JPEG"
+   },
+   {
+    "check": "palette",
+    "status": "pass",
+    "value": "body dE 11, bodyDeep dE 12, face dE 7, eye dE 8, cheek dE 14, paper dE 7",
+    "threshold": "informational",
+    "message": "nearest image colour to each palette token (lit fabric differs from the token; compare across the set)",
+    "fix": ""
+   },
+   {
+    "check": "figure_count",
+    "status": "pass",
+    "value": 3,
+    "threshold": "3 or 4 separate figures left to right",
+    "message": "figures found by difference from the background",
+    "fix": "regenerate with spacing, or render the views separately"
+   },
+   {
+    "check": "height_consistency",
+    "status": "pass",
+    "value": 1.004,
+    "threshold": "<1.06",
+    "message": "figure heights [712, 715, 712]",
+    "fix": "regenerate; views must share one scale"
+   },
+   {
+    "check": "cropped",
+    "status": "pass",
+    "value": false,
+    "threshold": "no figure touches the border",
+    "message": "all figures inside",
+    "fix": "regenerate with margins"
+   },
+   {
+    "check": "separation",
+    "status": "pass",
+    "value": [
+     "20",
+     "21"
+    ],
+    "threshold": "clear gaps between views",
+    "message": "gap in px between neighbouring figures",
+    "fix": "regenerate with clear spacing"
+   }
+  ]
+ },
+ {
+  "file": "mascot-use-cases.png",
+  "kind": "use-cases",
+  "status": "pass",
+  "checks": [
+   {
+    "check": "format",
+    "status": "pass",
+    "value": "png 8-bit 1536x1024",
+    "threshold": "8-bit png/webp",
+    "message": "format and bit depth",
+    "fix": "re-export as 8-bit PNG"
+   },
+   {
+    "check": "resolution",
+    "status": "pass",
+    "value": 1536,
+    "threshold": ">=1200 (canonical frame is 1254; masters of 2400+ are better)",
+    "message": "long edge 1536px",
+    "fix": "regenerate at the max tier (references/image-generation.md); never upscale"
+   },
+   {
+    "check": "jpeg_blockiness",
+    "status": "pass",
+    "value": 0.98,
+    "threshold": "<1.2",
+    "message": "ratio of 8-px block-edge gradient to mean gradient (1.0 = none)",
+    "fix": "regenerate as PNG; never extract nap from a JPEG"
+   },
+   {
+    "check": "palette",
+    "status": "pass",
+    "value": "body dE 9, bodyDeep dE 9, face dE 11, eye dE 8, cheek dE 15, paper dE 7",
+    "threshold": "informational",
+    "message": "nearest image colour to each palette token (lit fabric differs from the token; compare across the set)",
+    "fix": ""
+   },
+   {
+    "check": "background_plain",
+    "status": "pass",
+    "value": 1.5,
+    "threshold": "<14 std at the border (0-255)",
+    "message": "border colour spread",
+    "fix": "regenerate on a flat field"
+   },
+   {
+    "check": "sharpness",
+    "status": "pass",
+    "value": 260.6,
+    "threshold": ">=60 Laplacian variance",
+    "message": "overall sharpness",
+    "fix": "regenerate at quality high / larger size; never upscale"
+   },
+   {
+    "check": "quadrants",
+    "status": "pass",
+    "value": [
+     0.359,
+     0.28,
+     0.3,
+     0.261
+    ],
+    "threshold": "each quadrant has content",
+    "message": "content fraction per quadrant",
+    "fix": "regenerate with the 2x2 layout instruction"
+   }
+  ]
+ }
+]

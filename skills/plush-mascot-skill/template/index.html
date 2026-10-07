@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{page.title}}</title>
+<meta name="description" content="{{page.description}}">
+<meta name="theme-color" content="{{palette.paper}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{page.title}}">
+<meta property="og:description" content="{{page.description}}">
+<meta property="og:image" content="/{{art.hero}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/{{page.icon}}">
+<link rel="apple-touch-icon" href="/{{page.touchIcon}}">
+<link rel="preload" href="/assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/alegreya-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/{{page.poster}}" as="image">
+<script>document.documentElement.classList.add('js','loading');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('calm')</script>
+<link rel="stylesheet" href="/src/style.css">
+<!-- the colour tokens from mascot.config.json (palette and page.colors), before the first paint; src/page/palette.js lists what each one colours -->
+<style>:root{--ink:{{palette.ink}};--mascot:{{palette.body}};--face:{{palette.face}};--eye:{{palette.eye}};--paper:{{palette.paper}};--accent-base:{{palette.accent}};--ink-light:{{page.colors.lightInk}};--accent-light:{{page.colors.accentOnLight}};--accent-dark:{{page.colors.accentOnDark}};--mascot-text:{{page.colors.mascotText}}}</style>
+</head>
+<body>
+<a class="skip" href="#main">{{copy.skip}}</a>
+
+<!-- shared drawing bits: the felt nap pattern and the little cross-stitch -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="nap" width="256" height="256" patternUnits="userSpaceOnUse"><image href="/assets/felt.png" width="256" height="256"/></pattern>
+    <symbol id="x-stitch" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="4.2 3.4"/></symbol>
+  </defs>
+</svg>
+
+<!-- the paper and felt behind the mascot -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop__disc"></div>
+  <div class="backdrop__glow"></div>
+  <div class="backdrop__stars"></div>
+  <div class="pieces"></div>
+  <div class="backdrop__grain"></div>
+</div>
+
+<!-- the mascot: one live canvas behind the page (decorative; everything it shows is also written down) -->
+<div id="stage" class="is-loading" aria-hidden="true">
+  <img id="poster" src="/{{page.poster}}" alt="" width="{{frame.size}}" height="{{frame.size}}" decoding="async" fetchpriority="high">
+  <div id="fallback" hidden><img src="/{{page.poster}}" alt="" width="{{frame.size}}" height="{{frame.size}}"></div>
+</div>
+
+<header class="bar">
+  <a class="brand" href="#hello" aria-label="{{copy.bar.home}}">
+    <img src="/{{page.icon}}" alt="" width="52" height="52">
+    <span class="brand__word">{{character.product}}</span>
+  </a>
+  <div class="bar__right">
+    <button type="button" id="status-pill" class="tag" aria-label="{{states.idle.status}}. {{copy.bar.openLog}}">
+      <svg class="tag__x" aria-hidden="true"><use href="#x-stitch"/></svg>
+      <span id="status-label" role="status" aria-live="polite">{{states.idle.status}}</span>
+    </button>
+    <button type="button" id="workbench-toggle" class="btn btn--small" aria-expanded="false" aria-controls="workbench">{{copy.bar.workbench}}</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- hello -->
+  <section class="scene" id="hello" data-state="greeting" data-side="right" aria-labelledby="t-hello">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h1 class="display display--hero" id="t-hello">{{copy.hello.title}}</h1>
+        <p class="lede rv">{{copy.hello.lede}}</p>
+        <p class="scribble loader" aria-hidden="true"><svg><use href="#x-stitch"/></svg><span>{{copy.hello.loading}}</span></p>
+        <p class="scribble rv" id="hint"><span>{{copy.hello.hint}}</span><svg class="thread-x" aria-hidden="true"><use href="#x-stitch"/></svg></p>
+        <p class="scribble scribble--alert" id="fallback-note" hidden>{{copy.hello.noWebgl}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- listening (the first scene after the hello: scripts scroll to #motion) -->
+  <section class="scene" id="motion" data-state="listening" data-side="left" aria-labelledby="t-motion">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h2 class="display" id="t-motion">{{copy.motion.title}}</h2>
+        <p class="lede rv">{{copy.motion.lede}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- thinking -->
+  <section class="scene" id="thinking" data-state="thinking" data-side="right" aria-labelledby="t-thinking">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h2 class="display" id="t-thinking">{{copy.thinking.title}}</h2>
+        <p class="lede rv">{{copy.thinking.lede}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- working -->
+  <section class="scene" id="working" data-state="working" data-side="left" aria-labelledby="t-working">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h2 class="display" id="t-working">{{copy.working.title}}</h2>
+        <p class="lede rv">{{copy.working.lede}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- approval -->
+  <section class="scene" id="approval" data-state="approval" data-side="left" aria-labelledby="t-approval">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h2 class="display" id="t-approval">{{copy.approval.title}}</h2>
+        <p class="lede rv">{{copy.approval.lede}}</p>
+        <p class="aside rv">{{copy.approval.aside}}</p>
+        <div class="decision rv" role="group" aria-label="{{copy.approval.group}}">
+          <button type="button" class="btn btn--patch" id="approve">{{copy.approval.approve}}</button>
+          <button type="button" class="btn" id="not-yet">{{copy.approval.notYet}}</button>
+        </div>
+        <p class="decision__result" id="decision-result" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- done -->
+  <section class="scene" id="done" data-state="success" data-side="right" aria-labelledby="t-done" tabindex="-1">
+    <div class="scene__frame">
+      <div class="scene__text">
+        <h2 class="display display--big" id="t-done">{{copy.done.title}}</h2>
+        <p class="lede rv">{{copy.done.lede}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- look closer: the camera goes in, then the mascot turns around as you scroll; notes and prints come and go with the scroll position.
+       Each note's data-pin is the world point (x, y in character units) its leader line ends on: here, features of the example mascot. -->
+  <section class="scene scene--closer" id="closer" data-state="idle" data-side="right" aria-labelledby="t-closer">
+    <div class="scene__frame">
+      <svg class="leaders" aria-hidden="true" focusable="false"></svg>
+
+      <div class="beat beat--face" data-beat="0"><div class="beat__in">
+        <div class="scene__text">
+          <h2 class="display" id="t-closer">{{copy.closer.title}}</h2>
+          <p class="lede">{{copy.closer.lede}}</p>
+        </div>
+        <p class="note" data-pin="-0.98,2.5" style="--x: var(--gutter); --y: 15svh; --r: -3deg; --w: 13rem"><span>{{copy.closer.notes.felt}}</span></p>
+        <p class="note" data-pin="-0.36,2.2" style="--x: calc(var(--gutter) + 3rem); --y: 79svh; --r: 2deg; --w: 16rem"><span>{{copy.closer.notes.eyes}}</span></p>
+      </div></div>
+      <div class="beat beat--notes" data-beat="1"><div class="beat__in">
+        <p class="note" data-pin="0.02,1.12" style="--x: var(--gutter); --y: 44svh; --r: -2deg; --w: 17rem"><span>{{copy.closer.notes.chest}}</span></p>
+      </div></div>
+      <div class="beat beat--notes" data-beat="2"><div class="beat__in">
+        <p class="note" data-pin="-1.0,3.04" style="--x: var(--gutter); --y: 30svh; --r: -3deg; --w: 15rem"><span>{{copy.closer.notes.ears}}</span></p>
+      </div></div>
+      <div class="beat beat--notes" data-beat="3"><div class="beat__in">
+        <p class="note" data-pin="0,2.3" style="--x: var(--gutter); --y: 42svh; --r: 2deg; --w: 17rem"><span>{{copy.closer.notes.seam}}</span></p>
+      </div></div>
+      <div class="beat beat--sheet" data-beat="4 5 6"><div class="beat__in">
+        <figure class="print print--sheet">
+          <img src="/{{page.prints.turnaround.small}}" srcset="/{{page.prints.turnaround.small}} 768w, /{{page.prints.turnaround.large}} 1536w" sizes="(min-width: 900px) 40vw, 86vw" width="1536" height="1024" loading="lazy" decoding="async" alt="{{copy.closer.turnaroundAlt}}">
+          <figcaption class="scribble">{{copy.closer.turnaroundNote}}</figcaption>
+        </figure>
+      </div></div>
+      <div class="beat beat--cases" data-beat="5 6"><div class="beat__in">
+        <figure class="print print--cases">
+          <img src="/{{page.prints.useCases.small}}" srcset="/{{page.prints.useCases.small}} 768w, /{{page.prints.useCases.large}} 1536w" sizes="(min-width: 900px) 30vw, 70vw" width="1536" height="1024" loading="lazy" decoding="async" alt="{{copy.closer.useCasesAlt}}">
+          <figcaption class="scribble">{{copy.closer.useCasesNote}}</figcaption>
+        </figure>
+      </div></div>
+      <div class="beat beat--swatches" data-beat="6"><div class="beat__in">
+        <div class="swatches" role="list" aria-label="{{copy.closer.swatchesLabel}}">
+          <p class="scribble swatches__title">{{copy.closer.swatchesTitle}}</p>
+          <span class="swatch swatch--mascot" role="listitem"><b>{{copy.closer.colours.body}}</b><i>{{palette.body|hex}}</i></span>
+          <span class="swatch swatch--face" role="listitem"><b>{{copy.closer.colours.face}}</b><i>{{palette.face|hex}}</i></span>
+          <span class="swatch swatch--eye" role="listitem"><b>{{copy.closer.colours.eye}}</b><i>{{palette.eye|hex}}</i></span>
+          <span class="swatch swatch--paper" role="listitem"><b>{{copy.closer.colours.paper}}</b><i>{{palette.paper|hex}}</i></span>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- goodnight -->
+  <section class="scene scene--night" id="goodnight" data-state="resting" data-side="left" aria-labelledby="t-goodnight">
+    <div class="scene__frame">
+      <div class="night__app">
+        <img class="night__icon" src="/{{page.icon}}" alt="{{copy.goodnight.iconAlt}}" width="512" height="512" loading="lazy" decoding="async">
+        <p class="scribble night__note">{{copy.goodnight.iconNote}}</p>
+      </div>
+      <div class="scene__text">
+        <h2 class="display" id="t-goodnight">{{copy.goodnight.title}}</h2>
+        <p class="lede rv">{{copy.goodnight.lede}}</p>
+      </div>
+      <p class="night__zzz" aria-hidden="true"><span>z</span><span>z</span><span>z</span></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>{{copy.footer.text}} <a href="/HANDOFF.md">{{copy.footer.handoff}}</a></p>
+</footer>
+
+<!-- the workbench: everything a person poking at the prototype might want -->
+<aside id="workbench" class="drawer" aria-labelledby="wb-title" inert>
+  <div class="drawer__in">
+    <div class="drawer__head">
+      <h2 id="wb-title">{{copy.workbench.title}}</h2>
+      <button type="button" class="btn btn--small" id="wb-close">{{copy.workbench.close}}</button>
+    </div>
+    <p class="drawer__lede">{{copy.workbench.lede}}</p>
+
+    <h3 class="drawer__h">{{copy.workbench.statesHeading}}</h3>
+    <div id="states" class="states" role="group" aria-label="{{copy.workbench.statesLabel}}"></div>
+    <div class="state-note" aria-live="off">
+      <p class="state-note__title" id="state-title">{{states.idle.title}}</p>
+      <p id="state-description">{{states.idle.description}}</p>
+    </div>
+
+    <h3 class="drawer__h">{{copy.workbench.switchesHeading}}</h3>
+    <label class="check"><input type="checkbox" id="reduce"><span class="check__box" aria-hidden="true"><svg><use href="#x-stitch"/></svg></span><span>{{copy.workbench.reduce}}</span></label>
+    <button type="button" id="turntable" class="check" aria-pressed="false"><span class="check__box" aria-hidden="true"><svg><use href="#x-stitch"/></svg></span><span>{{copy.workbench.turntable}}</span></button>
+
+    <h3 class="drawer__h">{{copy.workbench.exportsHeading}}</h3>
+    <div class="drawer__actions">
+      <button type="button" id="export-png" class="btn btn--text">{{copy.workbench.png}}</button>
+      <button type="button" id="export-glb" class="btn btn--text">{{copy.workbench.glb}}</button>
+      <button type="button" id="open-activity" class="btn btn--text">{{copy.workbench.openLog}}</button>
+    </div>
+
+    <p class="drawer__fine">{{copy.workbench.fine}}</p>
+  </div>
+</aside>
+
+<dialog id="activity" aria-labelledby="activity-title">
+  <div class="dialog__head">
+    <h2 id="activity-title">{{copy.activity.title}}</h2>
+    <button type="button" id="close-activity" class="btn btn--small">{{copy.activity.close}}</button>
+  </div>
+  <p class="dialog__lede">{{copy.activity.lede}}</p>
+  <ol id="activity-list"></ol>
+  <p class="dialog__fine">{{copy.activity.fine}}</p>
+</dialog>
+
+<div id="poke" class="poke" aria-hidden="true"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="/src/app.js"></script>
+</body>
+</html>

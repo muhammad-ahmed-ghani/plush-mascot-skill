@@ -1,0 +1,28 @@
+{
+  "name": "Mosswick",
+  "one_liner": "a sleepy, gentle night-shift keeper who is always a little bit awake",
+  "personality": "calm, patient, quietly wise",
+  "product": "a meditation and sleep app",
+  "form": "a round, squat owl-like creature: a wide softly rounded head that merges into a pear-shaped body with no neck, short stubby legs and small rounded wing-mittens held slightly away from the body",
+  "silhouette": "two soft rounded ear-tufts angled outward at the top of the head and a wide heart-shaped facial disc, which together read as a sleepy owl even as a dark shape at 64 px",
+  "body_color": { "name": "dusty blue-grey", "hex": "#7C8FA6" },
+  "face_color": { "name": "soft oat cream", "hex": "#EDE3CF" },
+  "eye_color": { "name": "warm amber", "hex": "#E3A94F" },
+  "accent_color": { "name": "faded plum", "hex": "#7B5D7D" },
+  "material": "short dense brushed-velour needle-felt wool, soft and slightly fuzzy, with a fine visible pile",
+  "face": "a heart-shaped inset facial disc of pale oat felt, two large round amber satin eyes with heavy relaxed upper lids and dark pupils with small catchlights, a tiny triangular beak-stitch in plum thread, and two faint plum cheek patches",
+  "eye_note": "Eyes heavy-lidded and relaxed, never wide or alarmed.",
+  "chest_mark": "",
+  "hands_feet": "Small rounded wing-mittens without feathers drawn on them, short stubby round feet, no toes",
+  "forbidden": "no tail, no talons, no feathers drawn as individual shapes, no clothing, no accessories, no text, no glow effects",
+  "originality_note": "Original character. It must not resemble any existing owl mascot or toy.",
+  "scene_bg": { "name": "pale warm grey", "hex": "#EFEDEA" },
+  "chroma": true,
+  "key_color": { "name": "chroma magenta", "hex": "#FF00FF" },
+  "props": {
+    "work": "a small cream paper lantern held in one mitten and a tiny open notebook on the floor in front of it",
+    "research": "a round wooden star chart held up in both mittens, head tilted to look at it",
+    "decision": "one open mitten extended, a cream card with a single simple plum checkmark in the other",
+    "celebrate": "a small happy hop with both wings up and exactly three tiny plum and gold confetti pieces"
+  }
+}
