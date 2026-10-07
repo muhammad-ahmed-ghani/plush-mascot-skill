@@ -1,0 +1,14 @@
+{
+  "name": "plush-mascot-skill",
+  "owner": { "name": "Muhammad Ahmed", "url": "https://github.com/muhammad-ahmed-ghani" },
+  "metadata": {
+    "description": "Agent skill that builds plush 3D mascots: a live demo website, animated GLB 3D files and a motion reel."
+  },
+  "plugins": [
+    {
+      "name": "plush-mascot",
+      "source": "./",
+      "description": "Builds plush 3D mascots: a live demo website, animated GLB 3D files and a 60 fps motion reel (three.js)."
+    }
+  ]
+}

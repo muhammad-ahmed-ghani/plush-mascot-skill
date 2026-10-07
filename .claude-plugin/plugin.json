@@ -1,0 +1,10 @@
+{
+  "name": "plush-mascot",
+  "version": "1.0.0",
+  "description": "Builds plush 3D mascots: a live demo website, animated GLB 3D files and a 60 fps motion reel (three.js).",
+  "author": { "name": "Muhammad Ahmed", "url": "https://github.com/muhammad-ahmed-ghani" },
+  "homepage": "https://github.com/muhammad-ahmed-ghani/plush-mascot-skill",
+  "repository": "https://github.com/muhammad-ahmed-ghani/plush-mascot-skill",
+  "license": "MIT",
+  "keywords": ["mascot", "3d", "threejs", "glb", "gltf", "plush", "character", "skill"]
+}

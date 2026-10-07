@@ -34,23 +34,36 @@ The GLB is a clean soft plush. It does not carry the studio fabric shader, fuzz 
 
 ## Install
 
-Download `plush-mascot-skill.skill` from this repo. It is a zip archive with a `plush-mascot-skill/` folder inside, so unpacking it into your skills folder is all it takes.
+**Any agent, with npx** (Claude Code, Codex and many others). The CLI asks which agents to install for. Add `-g` for a global install.
 
-**Claude Code**
+```bash
+npx skills add muhammad-ahmed-ghani/plush-mascot-skill
+```
+
+**Claude Code plugin marketplace**
+
+```text
+/plugin marketplace add muhammad-ahmed-ghani/plush-mascot-skill
+/plugin install plush-mascot@plush-mascot-skill
+```
+
+**Manual install.** Download `plush-mascot-skill.skill` from this repo or from the latest release. It is a zip archive with a `plush-mascot-skill/` folder inside, so unpacking it into your skills folder is all it takes. The same folder is in this repo at `skills/plush-mascot-skill/`.
+
+Claude Code:
 
 ```bash
 mkdir -p ~/.claude/skills
 unzip plush-mascot-skill.skill -d ~/.claude/skills
 ```
 
-**Codex**
+Codex:
 
 ```bash
 mkdir -p ~/.agents/skills
 unzip plush-mascot-skill.skill -d ~/.agents/skills
 ```
 
-**Claude desktop and web**: open Customize, then Skills, and upload `plush-mascot-skill.skill` (a zip with the skill folder at its root).
+Claude desktop and web: open Customize, then Skills, and upload `plush-mascot-skill.skill` (a zip with the skill folder at its root).
 
 Check the install and your machine:
 
@@ -133,3 +146,7 @@ Known limits:
 | `scripts/` | `scaffold.mjs`, `doctor.mjs`, `smoke.sh`, `lint-skill.mjs` |
 | `template/` | the runnable three.js project: controller, fabric, face, rig, props, demo website, bake and validation scripts |
 | `assets/examples/` | reference results of the example mascot |
+
+## License
+
+MIT, see [LICENSE](LICENSE). The fonts in the template keep their own SIL Open Font License (see `skills/plush-mascot-skill/template/assets/fonts/LICENSES.md`). The reference screenshots and clips in `skills/plush-mascot-skill/assets/references/muse/` belong to their owners, are included for inspiration only, and are not covered by the MIT license.
