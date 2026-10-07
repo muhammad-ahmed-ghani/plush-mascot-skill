@@ -46,11 +46,11 @@ unzip plush-mascot-skill.skill -d ~/.claude/skills
 **Codex**
 
 ```bash
-mkdir -p ~/.codex/skills
-unzip plush-mascot-skill.skill -d ~/.codex/skills
+mkdir -p ~/.agents/skills
+unzip plush-mascot-skill.skill -d ~/.agents/skills
 ```
 
-**Claude desktop and web**: upload `plush-mascot-skill.skill` from the Skills section in Settings.
+**Claude desktop and web**: open Customize, then Skills, and upload `plush-mascot-skill.skill` (a zip with the skill folder at its root).
 
 Check the install and your machine:
 
